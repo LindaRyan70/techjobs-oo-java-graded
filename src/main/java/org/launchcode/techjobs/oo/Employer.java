@@ -42,7 +42,7 @@ public class Employer {
 
     public int getId() {
         return id;
-    }
+    }  // No Setter for id since it is set in the constructor above.
 
     public String getValue() {
         return value;

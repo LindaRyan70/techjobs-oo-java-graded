@@ -41,4 +41,19 @@ public class CoreCompetency {
     // TODO: Use the "Generate" tool to add a getter and setter for the 'value' field but
     //  ONLY a getter for the 'id' field.
 
+//   Created only a getter for id. No setter needed since the unique id is set with the constructor above.
+    public int getId() {
+        return id;
+    }
+
+//   Created getter and setter for value since will need to access and possibly modify/set this value.
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue (String value) {
+        this.value = value;
+    }
+
+
 }
