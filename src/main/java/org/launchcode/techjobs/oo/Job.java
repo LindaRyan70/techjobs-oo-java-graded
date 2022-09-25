@@ -34,11 +34,79 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
+//    Task 5.1.b - Added custom toString() to return String containing a blank line before & after each field of the Job info.
+//    NOTE: I commented this out and added to it for 5.2.b below it to pass the next test.
+//    @Override
+//    public String toString() {
+//         String jobInfo = '\n' + name + employer + location + positionType + coreCompetency + '\n';
+//         return jobInfo;
+//    }
+
+//    Task 5.2.b - Modified toString() to contain a label for each field, followed by the data stored in that field. Each field should be on its own line.
+//    NOTE: I commented this out and added to it for 5.3.b below it to pass the next test.
+//    NOTE: Had to do '\n' separately at both beg/end of Job info to match char '' single quotes req for 5.1 Test!
+//    @Override
+//    public String toString() {
+//        String jobInfo = '\n' + "ID: " + id + "\nName: " + name + "\nEmployer: " + employer + "\nLocation: " + location + "\nPosition Type: " + positionType + "\nCore Competency: " + coreCompetency + '\n';
+//         return jobInfo;
+//    }
+//    Task 5.3.b - Modified toString() so if a field is empty, the method adds, Data not available after the label.
+//    NOTE: Had to do '\n' separately at both beg/end of Job info to match char '' single quotes req for 5.1 & 5.2 Tests!
+//    @Override
+//    public String toString() {
+//
+//        if (name.equals("")) {
+//            setName("Data not available");
+//        }
+//        if (employer.getValue().equals("")) {
+//            employer.setValue("Data not available");
+//        }
+//        if (location.getValue().equals("")) {
+//            location.setValue("Data not available");
+//        }
+//        if (positionType.getValue().equals("")) {
+//            positionType.setValue("Data not available");
+//        }
+//        if (coreCompetency.getValue().equals("")) {
+//            coreCompetency.setValue("Data not available");
+//        }
+//        return '\n' + "ID: " + id + "\nName: " + name + "\nEmployer: " + employer + "\nLocation: " + location + "\nPosition Type: " + positionType + "\nCore Competency: " + coreCompetency + '\n';
+//    }
+
+
+//    Bonus Task 5.4.b - Modified toString() if Job obj ONLY contains data for id field, return OOPS! This job does not seem to exist.
+//    NOTE: Had to do '\n' separately at both beg/end of Job info to match char '' single quotes req for 5.1 & 5.2 Tests!
+    @Override
+    public String toString() {
+//  Added and if/else to add the Bonus check in the if() conditional, then bumped the other if() conditionals into the else{}
+        if (name.equals("") && employer.getValue().equals("") && location.getValue().equals("") && positionType.getValue().equals("") && coreCompetency.getValue().equals("")) {
+            return "OOPS! This job does not exist!";    // If ID is the only field with a value print this.
+        } else {                                        // Else, check/modify remaining fields accordingly
+            if (name.equals("")) {
+                setName("Data not available");
+            }
+            if (employer.getValue().equals("")) {
+                employer.setValue("Data not available");
+            }
+            if (location.getValue().equals("")) {
+                location.setValue("Data not available");
+            }
+            if (positionType.getValue().equals("")) {
+                positionType.setValue("Data not available");
+            }
+            if (coreCompetency.getValue().equals("")) {
+                coreCompetency.setValue("Data not available");
+            }
+        }   // Return the values with formatting/line breaks.
+        return '\n' + "ID: " + id + "\nName: " + name + "\nEmployer: " + employer + "\nLocation: " + location + "\nPosition Type: " + positionType + "\nCore Competency: " + coreCompetency + '\n';
+    }
+
+
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(Object o) {  // customize to compare/check for IDs to be same/"equal" (used in Task 4/5 TDD)
         if (this == o) return true;     //  Performs the reference check on the Object o
         if (!(o instanceof Job)) return false;      // Null and Class check used by other CLasses
 //        if (o == null || o.getClass() != getClass()) return false;    // Intellij auto-generated Null and Class checks
@@ -54,11 +122,14 @@ public class Job {
 
     }
 
-    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
-    //  and id. Generate a getter for the id field.
+//     TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
+//      and id. Generate a getter for the id field.
 
 //  Generate getters and setters for each field EXCEPT nextID and id.
     public String getName() {
+        if (name == null || name.isEmpty()) {
+            return "Data not available";
+        }
         return name;
     }
 
